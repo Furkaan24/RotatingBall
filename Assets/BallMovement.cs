@@ -4,29 +4,43 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    public Transform cubeTransform;  // The transform component of the cube
-    public float speed; // The speed of rotation
-    public TrailRenderer trail; // The trail renderer component
+    public Transform cubeTransform;
+    public float baseSpeed;
+    public float maxSpeed;
+    public float acceleration;
+    public TrailRenderer trail;
+
+    private float currentSpeed;
 
     void Start()
     {
-        trail.enabled = false; // Disable the trail at start
+        trail.enabled = false;
+        currentSpeed = baseSpeed;
     }
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal"); // Get the horizontal input axis
-        float verticalInput = Input.GetAxis("Vertical"); // Get the vertical input axis
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        if (horizontalInput != 0f || verticalInput != 0f) // Check for arrow key input
+        if (Input.GetKey(KeyCode.Space))
         {
-            Vector3 axis = new Vector3(verticalInput, 0f, -horizontalInput).normalized; // Calculate the rotation axis
-            transform.RotateAround(cubeTransform.position, axis, speed * Time.deltaTime); // Rotate the ball around the cube
-            trail.enabled = true; // Enable the trail while moving
+            currentSpeed = Mathf.Min(currentSpeed + acceleration * Time.deltaTime, maxSpeed);
         }
         else
         {
-            trail.enabled = false; // Disable the trail when not moving
+            currentSpeed = baseSpeed;
+        }
+
+        if (horizontalInput != 0f || verticalInput != 0f)
+        {
+            Vector3 axis = new Vector3(verticalInput, 0f, -horizontalInput).normalized;
+            transform.RotateAround(cubeTransform.position, axis, currentSpeed * Time.deltaTime);
+            trail.enabled = true;
+        }
+        else
+        {
+            trail.enabled = false;
         }
     }
 }

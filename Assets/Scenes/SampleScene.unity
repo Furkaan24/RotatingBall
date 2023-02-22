@@ -377,7 +377,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeTransform: {fileID: 1818335358}
-  speed: 100
+  baseSpeed: 50
+  maxSpeed: 500
+  acceleration: 50
   trail: {fileID: 793427157}
 --- !u!96 &793427157
 TrailRenderer:

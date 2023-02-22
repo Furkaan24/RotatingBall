@@ -9,8 +9,8 @@ public class CubeColor : MonoBehaviour
 
     void OnMouseDown()
     {
-        Color randomColor = Random.ColorHSV(); // Generate a random color
-        cubeRenderer.material.color = randomColor; // Change the color of the cube
-        ballRenderer.material.color = randomColor; // Change the color of the ball
+        Color randomColor = Random.ColorHSV(); 
+        cubeRenderer.material.color = randomColor; 
+        ballRenderer.material.color = randomColor;
     }
 }
