@@ -15,6 +15,7 @@ public class BallMovement : MonoBehaviour
     void Start()
     {
         trail.enabled = false;
+        currentSpeed = baseSpeed;
     }
 
     void Update()
