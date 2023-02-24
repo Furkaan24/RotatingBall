@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeTransform: {fileID: 1818335358}
-  baseSpeed: 50
+  baseSpeed: 100
   maxSpeed: 500
   acceleration: 50
   trail: {fileID: 793427157}
