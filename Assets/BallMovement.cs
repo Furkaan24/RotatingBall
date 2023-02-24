@@ -20,7 +20,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
             Vector3 axis = new Vector3(baseSpeed, 0f, -baseSpeed).normalized;
-            transform.RotateAround(cubeTransform.position, axis, currentSpeed * Time.delgtaTime);
+            transform.RotateAround(cubeTransform.position, axis, currentSpeed * Time.deltaTime);
             trail.enabled = true;
     }
 }
